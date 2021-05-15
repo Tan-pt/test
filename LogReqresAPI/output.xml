@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.2.2 (Python 3.7.9 on win32)" generated="20210502 13:29:21.567" rpa="false">
+<suite id="s1" name="ReqresAPI" source="C:\Users\USER\Desktop\Workshop\ReqresAPI.robot">
+<test id="s1-t1" name="Get user profile success">
+<kw name="Get Request User Case Success" library="ReqresAPIPageKeyword">
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>API</arg>
+<arg>${URLReqres}</arg>
+</arguments>
+<msg timestamp="20210502 13:29:21.821" level="INFO">Creating Session using : alias=API, url=https://reqres.in/api/users, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20210502 13:29:21.821" endtime="20210502 13:29:21.821"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
+<arguments>
+<arg>API</arg>
+<arg>/12</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20210502 13:29:21.821" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20210502 13:29:22.182" level="INFO">GET Request : url=https://reqres.in/api/users/12 
+ path_url=/api/users/12 
+ headers={'User-Agent': 'python-requests/2.25.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20210502 13:29:22.182" level="INFO">GET Response : url=https://reqres.in/api/users/12 
+ status=200, reason=OK 
+ headers={'Date': 'Sun, 02 May 2021 06:29:26 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Set-Cookie': '__cfduid=d4b013a7e03b660940b62f6e1feb7da311619936966; expires=Tue, 01-Jun-21 06:29:26 GMT; path=/; domain=.reqres.in; HttpOnly; SameSite=Lax; Secure', 'x-powered-by': 'Express', 'access-control-allow-origin': '*', 'etag': 'W/"11c-Y8Nrcu5DO2DrJvfp3zc2PKGiar4"', 'via': '1.1 vegur', 'Cache-Control': 'max-age=14400', 'CF-Cache-Status': 'HIT', 'Age': '2920', 'cf-request-id': '09cd5d90c700001d77c5292000000001', 'Expect-CT': 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"', 'Report-To': '{"group":"cf-nel","endpoints":[{"url":"https:\\/\\/a.nel.cloudflare.com\\/report?s=ZXbsDqRvwDajq6Zx%2FuB6pbmwHYhOxk0jjX20Q49zK6XZtjG%2BJSFIk7FMo%2F5jeBJdlQ6dMOlO2dIflgJAnRpOzIGHdnpBj4RYTeY%3D"}],"max_age":604800}', 'NEL': '{"max_age":604800,"report_to":"cf-nel"}', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '648f31fadc8c1d77-NRT', 'Content-Encoding': 'gzip', 'alt-svc': 'h3-27=":443"; ma=86400, h3-28=":443"; ma=86400, h3-29=":443"; ma=86400'} 
+ body={"data":{"id":12,"email":"rachel.howell@reqres.in","first_name":"Rachel","last_name":"Howell","avatar":"https://reqres.in/img/faces/12-image.jpg"},"support":{"url":"https://reqres.in/#support-heading","text":"To keep ReqRes free, contributions towards server costs are appreciated!"}} 
+ </msg>
+<msg timestamp="20210502 13:29:22.182" level="INFO">c:\python37\lib\site-packages\urllib3\connectionpool.py:1020: InsecureRequestWarning: Unverified HTTPS request is being made to host 'reqres.in'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  InsecureRequestWarning,</msg>
+<msg timestamp="20210502 13:29:22.183" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20210502 13:29:21.821" endtime="20210502 13:29:22.183"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${resp.status_code}</arg>
+<arg>${200}</arg>
+</arguments>
+<msg timestamp="20210502 13:29:22.184" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20210502 13:29:22.183" endtime="20210502 13:29:22.184"></status>
+</kw>
+<kw name="To Json" library="RequestsLibrary">
+<doc>*DEPRECATED* Please use ${resp.json()} instead. Have a look at the improved HTML output as pretty printing replacement.</doc>
+<arguments>
+<arg>${resp.text}</arg>
+</arguments>
+<assign>
+<var>${dictJson}</var>
+</assign>
+<msg timestamp="20210502 13:29:22.184" level="WARN">Keyword 'RequestsLibrary.To Json' is deprecated. Please use ${resp.json()} instead. Have a look at the improved HTML output as pretty printing replacement.</msg>
+<msg timestamp="20210502 13:29:22.186" level="INFO">To JSON using : content={"data":{"id":12,"email":"rachel.howell@reqres.in","first_name":"Rachel","last_name":"Howell","avatar":"https://reqres.in/img/faces/12-image.jpg"},"support":{"url":"https://reqres.in/#support-heading","text":"To keep ReqRes free, contributions towards server costs are appreciated!"}} </msg>
+<msg timestamp="20210502 13:29:22.186" level="INFO">To JSON using : pretty_print=False </msg>
+<msg timestamp="20210502 13:29:22.186" level="INFO">${dictJson} = {'data': {'id': 12, 'email': 'rachel.howell@reqres.in', 'first_name': 'Rachel', 'last_name': 'Howell', 'avatar': 'https://reqres.in/img/faces/12-image.jpg'}, 'support': {'url': 'https://reqres.in/#sup...</msg>
+<status status="PASS" starttime="20210502 13:29:22.184" endtime="20210502 13:29:22.186"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${dictJson['data']['id']}</arg>
+</arguments>
+<assign>
+<var>${ID}</var>
+</assign>
+<msg timestamp="20210502 13:29:22.187" level="INFO">${ID} = 12</msg>
+<status status="PASS" starttime="20210502 13:29:22.186" endtime="20210502 13:29:22.187"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${dictJson['data']['email']}</arg>
+</arguments>
+<assign>
+<var>${Email}</var>
+</assign>
+<msg timestamp="20210502 13:29:22.188" level="INFO">${Email} = rachel.howell@reqres.in</msg>
+<status status="PASS" starttime="20210502 13:29:22.187" endtime="20210502 13:29:22.188"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${dictJson['data']['first_name']}</arg>
+</arguments>
+<assign>
+<var>${FirstName}</var>
+</assign>
+<msg timestamp="20210502 13:29:22.189" level="INFO">${FirstName} = Rachel</msg>
+<status status="PASS" starttime="20210502 13:29:22.188" endtime="20210502 13:29:22.189"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${dictJson['data']['last_name']}</arg>
+</arguments>
+<assign>
+<var>${LastName}</var>
+</assign>
+<msg timestamp="20210502 13:29:22.190" level="INFO">${LastName} = Howell</msg>
+<status status="PASS" starttime="20210502 13:29:22.189" endtime="20210502 13:29:22.190"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${dictJson['data']['avatar']}</arg>
+</arguments>
+<assign>
+<var>${Avatar}</var>
+</assign>
+<msg timestamp="20210502 13:29:22.190" level="INFO">${Avatar} = https://reqres.in/img/faces/12-image.jpg</msg>
+<status status="PASS" starttime="20210502 13:29:22.190" endtime="20210502 13:29:22.190"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${ID}</arg>
+<arg>${ID25}</arg>
+</arguments>
+<msg timestamp="20210502 13:29:22.191" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20210502 13:29:22.191" endtime="20210502 13:29:22.191"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${Email}</arg>
+<arg>${EmailID12}</arg>
+</arguments>
+<status status="PASS" starttime="20210502 13:29:22.191" endtime="20210502 13:29:22.192"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${FirstName}</arg>
+<arg>${FirstnameID12}</arg>
+</arguments>
+<status status="PASS" starttime="20210502 13:29:22.192" endtime="20210502 13:29:22.193"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${LastName}</arg>
+<arg>${LastnameID12}</arg>
+</arguments>
+<status status="PASS" starttime="20210502 13:29:22.193" endtime="20210502 13:29:22.194"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${Avatar}</arg>
+<arg>${imgID12}</arg>
+</arguments>
+<status status="PASS" starttime="20210502 13:29:22.194" endtime="20210502 13:29:22.194"></status>
+</kw>
+<status status="PASS" starttime="20210502 13:29:21.820" endtime="20210502 13:29:22.195"></status>
+</kw>
+<status status="PASS" starttime="20210502 13:29:21.820" endtime="20210502 13:29:22.196" critical="yes"></status>
+</test>
+<test id="s1-t2" name="Get user profile but user not found">
+<kw name="Get Request User Case User Not Found" library="ReqresAPIPageKeyword">
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>API</arg>
+<arg>${URLReqres}</arg>
+</arguments>
+<msg timestamp="20210502 13:29:22.199" level="INFO">Creating Session using : alias=API, url=https://reqres.in/api/users, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20210502 13:29:22.199" endtime="20210502 13:29:22.200"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
+<arguments>
+<arg>API</arg>
+<arg>/1234</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20210502 13:29:22.200" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20210502 13:29:23.155" level="INFO">GET Request : url=https://reqres.in/api/users/1234 
+ path_url=/api/users/1234 
+ headers={'User-Agent': 'python-requests/2.25.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20210502 13:29:23.155" level="INFO">GET Response : url=https://reqres.in/api/users/1234 
+ status=404, reason=Not Found 
+ headers={'Date': 'Sun, 02 May 2021 06:29:27 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '2', 'Connection': 'keep-alive', 'Set-Cookie': '__cfduid=dd53fccdc794c330197f50676a924279f1619936967; expires=Tue, 01-Jun-21 06:29:27 GMT; path=/; domain=.reqres.in; HttpOnly; SameSite=Lax; Secure', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"2-vyGp6PvFo4RvsFtPoIWeCReyIC8"', 'Via': '1.1 vegur', 'Cache-Control': 'max-age=14400', 'CF-Cache-Status': 'MISS', 'cf-request-id': '09cd5d921500005f331c3d9000000001', 'Expect-CT': 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"', 'Report-To': '{"group":"cf-nel","endpoints":[{"url":"https:\\/\\/a.nel.cloudflare.com\\/report?s=VJ%2Fucr%2FMq7%2FHCPt0QBRPNfnW2VybpGLcLwPHCS55KFkBa1OCSfLcb%2BH1RSi25a%2FYFegdYgNeBQE8Yb%2BIDwQqGC58uH%2FsiSxKR14%3D"}],"max_age":604800}', 'NEL': '{"max_age":604800,"report_to":"cf-nel"}', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '648f31fce8eb5f33-NRT', 'alt-svc': 'h3-27=":443"; ma=86400, h3-28=":443"; ma=86400, h3-29=":443"; ma=86400'} 
+ body={} 
+ </msg>
+<msg timestamp="20210502 13:29:23.155" level="INFO">c:\python37\lib\site-packages\urllib3\connectionpool.py:1020: InsecureRequestWarning: Unverified HTTPS request is being made to host 'reqres.in'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  InsecureRequestWarning,</msg>
+<msg timestamp="20210502 13:29:23.156" level="INFO">${resp} = &lt;Response [404]&gt;</msg>
+<status status="PASS" starttime="20210502 13:29:22.200" endtime="20210502 13:29:23.156"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${resp.status_code}</arg>
+<arg>${404}</arg>
+</arguments>
+<msg timestamp="20210502 13:29:23.156" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20210502 13:29:23.156" endtime="20210502 13:29:23.156"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${resp.text}</arg>
+</arguments>
+<msg timestamp="20210502 13:29:23.156" level="INFO">{}</msg>
+<status status="PASS" starttime="20210502 13:29:23.156" endtime="20210502 13:29:23.157"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${resp.text}</arg>
+<arg>{}</arg>
+</arguments>
+<status status="PASS" starttime="20210502 13:29:23.157" endtime="20210502 13:29:23.157"></status>
+</kw>
+<status status="PASS" starttime="20210502 13:29:22.198" endtime="20210502 13:29:23.157"></status>
+</kw>
+<status status="PASS" starttime="20210502 13:29:22.197" endtime="20210502 13:29:23.158" critical="yes"></status>
+</test>
+<status status="PASS" starttime="20210502 13:29:21.569" endtime="20210502 13:29:23.159"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="2" fail="0">Critical Tests</stat>
+<stat pass="2" fail="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="2" fail="0" id="s1" name="ReqresAPI">ReqresAPI</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20210502 13:29:21.821" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20210502 13:29:22.184" level="WARN">Keyword 'RequestsLibrary.To Json' is deprecated. Please use ${resp.json()} instead. Have a look at the improved HTML output as pretty printing replacement.</msg>
+<msg timestamp="20210502 13:29:22.200" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+</errors>
+</robot>

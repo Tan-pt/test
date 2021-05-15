@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.0.1 (Python 3.7.9 on win32)" generated="20210511 19:05:42.915" rpa="false" schemaversion="2">
+<suite id="s1" name="Herokuapp" source="C:\Users\User\Desktop\Automation test3-4\Herokuapp.robot">
+<test id="s1-t1" name="Login success">
+<kw name="Open Herokuapp" library="HerokuappPageKeyword">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${URLHerokuapp}</arg>
+<arg>gc</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20210511 19:05:43.234" level="INFO">Opening browser 'gc' to base url 'http://the-internet.herokuapp.com/login'.</msg>
+<status status="PASS" starttime="20210511 19:05:43.234" endtime="20210511 19:05:48.332"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20210511 19:05:48.333" endtime="20210511 19:05:48.472"/>
+</kw>
+<status status="PASS" starttime="20210511 19:05:43.233" endtime="20210511 19:05:48.472"/>
+</kw>
+<kw name="Login" library="HerokuappPageKeyword">
+<arg>tomsmith</arg>
+<arg>SuperSecretPassword!</arg>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${txtUsername}</arg>
+<arg>${Timeout}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20210511 19:05:48.474" endtime="20210511 19:05:48.511"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${txtUsername}</arg>
+<arg>${Username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20210511 19:05:48.512" level="INFO">Typing text 'tomsmith' into text field 'xpath=//input[@id="username"]'.</msg>
+<status status="PASS" starttime="20210511 19:05:48.511" endtime="20210511 19:05:48.610"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${txtPassword}</arg>
+<arg>${Password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20210511 19:05:48.611" level="INFO">Typing text 'SuperSecretPassword!' into text field 'xpath=//input[@id="password"]'.</msg>
+<status status="PASS" starttime="20210511 19:05:48.610" endtime="20210511 19:05:48.740"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>Login</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20210511 19:05:48.894" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="Login"&gt;&lt;img src="Login" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20210511 19:05:48.894" level="INFO">c:\python37\lib\site-packages\selenium\webdriver\remote\webdriver.py:1031: UserWarning: name used for saved screenshot does not match file type. It should end with a `.png` extension
+  "type. It should end with a `.png` extension", UserWarning)</msg>
+<status status="PASS" starttime="20210511 19:05:48.741" endtime="20210511 19:05:48.897"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${btnLogin}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20210511 19:05:48.898" level="INFO">Clicking element 'xpath=//button[@type="submit"]'.</msg>
+<status status="PASS" starttime="20210511 19:05:48.897" endtime="20210511 19:05:50.243"/>
+</kw>
+<status status="PASS" starttime="20210511 19:05:48.473" endtime="20210511 19:05:50.244"/>
+</kw>
+<kw name="Verify Login and Logout Success" library="HerokuappPageKeyword">
+<kw name="Wait Until Element Contains" library="SeleniumLibrary">
+<arg>${lblYouLogged}</arg>
+<arg>${msgLoginSuccess}</arg>
+<arg>${Timeout}</arg>
+<doc>Waits until the element ``locator`` contains ``text``.</doc>
+<status status="PASS" starttime="20210511 19:05:50.244" endtime="20210511 19:05:50.279"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>Verify Login Success</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20210511 19:05:50.410" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="Verify%20Login%20Success"&gt;&lt;img src="Verify%20Login%20Success" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20210511 19:05:50.280" endtime="20210511 19:05:50.410"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${btnLogout}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20210511 19:05:50.411" level="INFO">Clicking element 'xpath=//*[@class="button secondary radius"]'.</msg>
+<status status="PASS" starttime="20210511 19:05:50.410" endtime="20210511 19:05:51.547"/>
+</kw>
+<kw name="Wait Until Element Contains" library="SeleniumLibrary">
+<arg>${lblYouLogged}</arg>
+<arg>${msgLogoutSuccess}</arg>
+<arg>${Timeout}</arg>
+<doc>Waits until the element ``locator`` contains ``text``.</doc>
+<status status="PASS" starttime="20210511 19:05:51.547" endtime="20210511 19:05:51.569"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>Verify Logout Success</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20210511 19:05:51.701" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="Verify%20Logout%20Success"&gt;&lt;img src="Verify%20Logout%20Success" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20210511 19:05:51.569" endtime="20210511 19:05:51.701"/>
+</kw>
+<status status="PASS" starttime="20210511 19:05:50.244" endtime="20210511 19:05:51.701"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20210511 19:05:51.702" endtime="20210511 19:05:53.924"/>
+</kw>
+<status status="PASS" starttime="20210511 19:05:43.231" endtime="20210511 19:05:53.925"/>
+</test>
+<test id="s1-t2" name="Login failed - Password incorrect">
+<kw name="Open Herokuapp" library="HerokuappPageKeyword">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${URLHerokuapp}</arg>
+<arg>gc</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20210511 19:05:53.943" level="INFO">Opening browser 'gc' to base url 'http://the-internet.herokuapp.com/login'.</msg>
+<status status="PASS" starttime="20210511 19:05:53.942" endtime="20210511 19:05:57.281"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20210511 19:05:57.293" level="FAIL">NoSuchWindowException: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=90.0.4430.93)
+</msg>
+<status status="FAIL" starttime="20210511 19:05:57.284" endtime="20210511 19:05:57.293"/>
+</kw>
+<msg timestamp="20210511 19:05:57.293" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: NoSuchWindowException: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=90.0.4430.93)
+</msg>
+<msg timestamp="20210511 19:05:57.301" level="FAIL">NoSuchWindowException: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=90.0.4430.93)
+</msg>
+<status status="FAIL" starttime="20210511 19:05:57.281" endtime="20210511 19:05:57.302"/>
+</kw>
+<status status="FAIL" starttime="20210511 19:05:53.939" endtime="20210511 19:05:57.302"/>
+</kw>
+<kw name="Login" library="HerokuappPageKeyword">
+<arg>tomsmith</arg>
+<arg>Password!</arg>
+<status status="NOT RUN" starttime="20210511 19:05:57.303" endtime="20210511 19:05:57.303"/>
+</kw>
+<kw name="Verify Login Failed Case Password incorrect" library="HerokuappPageKeyword">
+<status status="NOT RUN" starttime="20210511 19:05:57.304" endtime="20210511 19:05:57.304"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20210511 19:05:57.305" endtime="20210511 19:05:59.420"/>
+</kw>
+<status status="FAIL" starttime="20210511 19:05:53.937" endtime="20210511 19:05:59.421">NoSuchWindowException: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=90.0.4430.93)
+</status>
+</test>
+<test id="s1-t3" name="Login failed - Username not found">
+<kw name="Open Herokuapp" library="HerokuappPageKeyword">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${URLHerokuapp}</arg>
+<arg>gc</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20210511 19:05:59.425" level="INFO">Opening browser 'gc' to base url 'http://the-internet.herokuapp.com/login'.</msg>
+<status status="PASS" starttime="20210511 19:05:59.425" endtime="20210511 19:06:07.207"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20210511 19:06:07.208" endtime="20210511 19:06:07.330"/>
+</kw>
+<status status="PASS" starttime="20210511 19:05:59.424" endtime="20210511 19:06:07.331"/>
+</kw>
+<kw name="Login" library="HerokuappPageKeyword">
+<arg>tomholland</arg>
+<arg>Password!</arg>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${txtUsername}</arg>
+<arg>${Timeout}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20210511 19:06:07.332" endtime="20210511 19:06:07.368"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${txtUsername}</arg>
+<arg>${Username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20210511 19:06:07.368" level="INFO">Typing text 'tomholland' into text field 'xpath=//input[@id="username"]'.</msg>
+<status status="PASS" starttime="20210511 19:06:07.368" endtime="20210511 19:06:07.462"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${txtPassword}</arg>
+<arg>${Password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20210511 19:06:07.463" level="INFO">Typing text 'Password!' into text field 'xpath=//input[@id="password"]'.</msg>
+<status status="PASS" starttime="20210511 19:06:07.462" endtime="20210511 19:06:07.558"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>Login</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20210511 19:06:07.696" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="Login"&gt;&lt;img src="Login" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20210511 19:06:07.558" endtime="20210511 19:06:07.696"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${btnLogin}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20210511 19:06:07.697" level="INFO">Clicking element 'xpath=//button[@type="submit"]'.</msg>
+<status status="PASS" starttime="20210511 19:06:07.697" endtime="20210511 19:06:08.653"/>
+</kw>
+<status status="PASS" starttime="20210511 19:06:07.331" endtime="20210511 19:06:08.653"/>
+</kw>
+<kw name="Verify Login Failed Case Username Not Found" library="HerokuappPageKeyword">
+<kw name="Wait Until Element Contains" library="SeleniumLibrary">
+<arg>${lblYouLogged}</arg>
+<arg>${msgUsernameNotFound}</arg>
+<arg>${Timeout}</arg>
+<doc>Waits until the element ``locator`` contains ``text``.</doc>
+<status status="PASS" starttime="20210511 19:06:08.654" endtime="20210511 19:06:08.683"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>Verify Login Failed Case Username Not Found</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20210511 19:06:08.836" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="Verify%20Login%20Failed%20Case%20Username%20Not%20Found"&gt;&lt;img src="Verify%20Login%20Failed%20Case%20Username%20Not%20Found" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20210511 19:06:08.683" endtime="20210511 19:06:08.836"/>
+</kw>
+<status status="PASS" starttime="20210511 19:06:08.653" endtime="20210511 19:06:08.836"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20210511 19:06:08.837" endtime="20210511 19:06:11.023"/>
+</kw>
+<status status="PASS" starttime="20210511 19:05:59.423" endtime="20210511 19:06:11.023"/>
+</test>
+<status status="FAIL" starttime="20210511 19:05:42.917" endtime="20210511 19:06:11.025"/>
+</suite>
+<statistics>
+<total>
+<stat pass="2" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="2" fail="1" skip="0" id="s1" name="Herokuapp">Herokuapp</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20210511 19:05:57.293" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: NoSuchWindowException: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=90.0.4430.93)
+</msg>
+</errors>
+</robot>
